@@ -1,0 +1,30 @@
+.container {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  div {
+    display: flex;
+    gap: 10px;
+  }
+}
+
+.tab-content {
+  margin-top: 16px;
+}
+
+.enroll-section {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 16px;
+
+  mat-form-field {
+    flex: 1;
+  }
+}

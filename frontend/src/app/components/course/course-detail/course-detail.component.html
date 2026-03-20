@@ -1,0 +1,20 @@
+<div class="container" *ngIf="course">
+  <div class="header">
+    <h2>{{ course.courseName }}</h2>
+    <div>
+      <button mat-raised-button color="primary" (click)="editCourse()">
+        <mat-icon>edit</mat-icon> Edit
+      </button>
+      <button mat-raised-button (click)="goBack()">Back</button>
+    </div>
+  </div>
+
+  <mat-card>
+    <mat-card-content>
+      <p><strong>ID:</strong> {{ course.id }}</p>
+      <p><strong>Course Name:</strong> {{ course.courseName }}</p>
+      <p><strong>Description:</strong> {{ course.description || 'N/A' }}</p>
+      <p><strong>Credits:</strong> {{ course.credits }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>

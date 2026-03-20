@@ -14,64 +14,8 @@ import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dial
   selector: 'app-course-list',
   standalone: true,
   imports: [CommonModule, MatTableModule, MatButtonModule, MatIconModule, MatDialogModule, MatSnackBarModule],
-  template: `
-    <div class="container">
-      <div class="header">
-        <h2>Courses</h2>
-        <button mat-raised-button color="primary" (click)="addCourse()">
-          <mat-icon>add</mat-icon> Add Course
-        </button>
-      </div>
-
-      <table mat-table [dataSource]="courses" class="mat-elevation-z4 full-width">
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef>ID</th>
-          <td mat-cell *matCellDef="let c">{{ c.id }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="courseName">
-          <th mat-header-cell *matHeaderCellDef>Course Name</th>
-          <td mat-cell *matCellDef="let c">{{ c.courseName }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="description">
-          <th mat-header-cell *matHeaderCellDef>Description</th>
-          <td mat-cell *matCellDef="let c">{{ c.description }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="credits">
-          <th mat-header-cell *matHeaderCellDef>Credits</th>
-          <td mat-cell *matCellDef="let c">{{ c.credits }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef>Actions</th>
-          <td mat-cell *matCellDef="let c">
-            <button mat-icon-button color="primary" (click)="viewCourse(c.id)" title="View">
-              <mat-icon>visibility</mat-icon>
-            </button>
-            <button mat-icon-button color="accent" (click)="editCourse(c.id)" title="Edit">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-icon-button color="warn" (click)="confirmDelete(c)" title="Delete">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-
-      <p *ngIf="courses.length === 0" class="no-data">No courses found.</p>
-    </div>
-  `,
-  styles: [`
-    .container { padding: 20px; }
-    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-    .full-width { width: 100%; }
-    .no-data { text-align: center; padding: 20px; color: #888; }
-  `]
+  templateUrl: './course-list.component.html',
+  styleUrls: ['./course-list.component.scss']
 })
 export class CourseListComponent implements OnInit {
   courses: Course[] = [];

@@ -18,56 +18,8 @@ import { StudentService } from '../../../services/student.service';
     CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule,
     MatButtonModule, MatDatepickerModule, MatNativeDateModule, MatCardModule, MatSnackBarModule
   ],
-  template: `
-    <div class="container">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>{{ isEditMode ? 'Edit Student' : 'Add Student' }}</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
-            <mat-form-field appearance="outline" class="full-width">
-              <mat-label>First Name</mat-label>
-              <input matInput formControlName="firstName" placeholder="Enter first name">
-              <mat-error *ngIf="studentForm.get('firstName')?.hasError('required')">First name is required</mat-error>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="full-width">
-              <mat-label>Last Name</mat-label>
-              <input matInput formControlName="lastName" placeholder="Enter last name">
-              <mat-error *ngIf="studentForm.get('lastName')?.hasError('required')">Last name is required</mat-error>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="full-width">
-              <mat-label>Email</mat-label>
-              <input matInput formControlName="email" placeholder="Enter email" type="email">
-              <mat-error *ngIf="studentForm.get('email')?.hasError('required')">Email is required</mat-error>
-              <mat-error *ngIf="studentForm.get('email')?.hasError('email')">Invalid email format</mat-error>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="full-width">
-              <mat-label>Date of Birth</mat-label>
-              <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" placeholder="Select date">
-              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-
-            <div class="actions">
-              <button mat-button type="button" (click)="cancel()">Cancel</button>
-              <button mat-raised-button color="primary" type="submit" [disabled]="studentForm.invalid">
-                {{ isEditMode ? 'Update' : 'Create' }}
-              </button>
-            </div>
-          </form>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  `,
-  styles: [`
-    .container { padding: 20px; max-width: 600px; margin: 0 auto; }
-    .full-width { width: 100%; margin-bottom: 10px; }
-    .actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 16px; }
-  `]
+  templateUrl: './student-form.component.html',
+  styleUrls: ['./student-form.component.scss']
 })
 export class StudentFormComponent implements OnInit {
   studentForm!: FormGroup;

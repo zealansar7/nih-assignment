@@ -14,64 +14,8 @@ import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dial
   selector: 'app-student-list',
   standalone: true,
   imports: [CommonModule, MatTableModule, MatButtonModule, MatIconModule, MatDialogModule, MatSnackBarModule],
-  template: `
-    <div class="container">
-      <div class="header">
-        <h2>Students</h2>
-        <button mat-raised-button color="primary" (click)="addStudent()">
-          <mat-icon>add</mat-icon> Add Student
-        </button>
-      </div>
-
-      <table mat-table [dataSource]="students" class="mat-elevation-z4 full-width">
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef>ID</th>
-          <td mat-cell *matCellDef="let s">{{ s.id }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="firstName">
-          <th mat-header-cell *matHeaderCellDef>First Name</th>
-          <td mat-cell *matCellDef="let s">{{ s.firstName }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="lastName">
-          <th mat-header-cell *matHeaderCellDef>Last Name</th>
-          <td mat-cell *matCellDef="let s">{{ s.lastName }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="email">
-          <th mat-header-cell *matHeaderCellDef>Email</th>
-          <td mat-cell *matCellDef="let s">{{ s.email }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef>Actions</th>
-          <td mat-cell *matCellDef="let s">
-            <button mat-icon-button color="primary" (click)="viewStudent(s.id)" title="View">
-              <mat-icon>visibility</mat-icon>
-            </button>
-            <button mat-icon-button color="accent" (click)="editStudent(s.id)" title="Edit">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-icon-button color="warn" (click)="confirmDelete(s)" title="Delete">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-
-      <p *ngIf="students.length === 0" class="no-data">No students found.</p>
-    </div>
-  `,
-  styles: [`
-    .container { padding: 20px; }
-    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-    .full-width { width: 100%; }
-    .no-data { text-align: center; padding: 20px; color: #888; }
-  `]
+  templateUrl: './student-list.component.html',
+  styleUrls: ['./student-list.component.scss']
 })
 export class StudentListComponent implements OnInit {
   students: Student[] = [];
